@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1586917197 source:c:\users\cristian\desktop\carpeta codeblocks\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"calculos.h"
+
+1586917152 source:c:\users\cristian\desktop\carpeta codeblocks\calculadora\calculos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"calculos.h"
+
+1586917133 c:\users\cristian\desktop\carpeta codeblocks\calculadora\calculos.h
+
+1586917197 source:c:\users\cristian\desktop\tp_laboratorio_1\tp1 - calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"calculos.h"
+
+1586920987 c:\users\cristian\desktop\tp_laboratorio_1\tp1 - calculadora\calculos.h
+
+1586976377 source:c:\users\cristian\desktop\tp_laboratorio_1\tp1 - calculadora\calculos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"calculos.h"
+
