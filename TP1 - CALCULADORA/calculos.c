@@ -168,9 +168,12 @@ void funcionFactorial(float a, float b)
 {
 
     char rta = ' ';
+    int trigger = 0;
 
     int cambioA = (int) a;
     int cambioB = (int) b;
+
+do{
 
     printf("cual de los dos numeros desea factorizar - A o B ?: ");
     fflush(stdin);
@@ -178,8 +181,9 @@ void funcionFactorial(float a, float b)
 
     char s = toupper(rta);
 
-    if(s == 'A' )
+    switch(s)
     {
+    case 'A':
         if(a < 0)
         {
             printf("no se puede factoriar un numero negativo.\n");
@@ -188,13 +192,11 @@ void funcionFactorial(float a, float b)
         else
         {
             factorialA(cambioA);
+            trigger = 1;
         }
+        break;
 
-
-    }
-
-    else
-    {
+    case 'B':
 
         if(b < 0)
         {
@@ -204,9 +206,19 @@ void funcionFactorial(float a, float b)
         else
         {
             factorialB(cambioB);
+            trigger = 1;
         }
+        break;
+
+    default:
+        printf("eliga opcion A o B\n");
+        break;
 
     }
+
+
+}while(trigger==0);
+
 }
 
 
