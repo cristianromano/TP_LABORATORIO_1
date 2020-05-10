@@ -10,7 +10,7 @@
 
 static int generarId()
 {
-	static int contadorId=0;
+	static int contadorId=1000;
 	contadorId++;
 	return contadorId;
 }
@@ -39,6 +39,7 @@ void ingresoDatos(eEmpleado emp[], int tam, eFecha auxFecha[])
 
 
         printf("%d.ingrese nombre: ",i+1);
+        fflush(stdin);
         gets(emp[indice].nombre);
         fflush(stdin);
 
@@ -63,7 +64,7 @@ void ingresoDatos(eEmpleado emp[], int tam, eFecha auxFecha[])
         fflush(stdin);
 
         printf("%d.ingrese fecha de entrada xx/xx/xxxx: \n",i+1);
-        scanf("%d%d%d",&auxFecha[indice].dia,&auxFecha[indice].mes,&auxFecha[indice].anio);
+        scanf("%d/%d/%d",&auxFecha[indice].dia,&auxFecha[indice].mes,&auxFecha[indice].anio);
 
         emp[indice].fechaIngreso = auxFecha[indice];
 
@@ -137,7 +138,7 @@ void mostrarEmpleado(eEmpleado listado[],int tam, int tamsec , eSector sectores[
     int i;
 
     printf("**********************************************************************************\n");
-    printf("  ID      NOMBRE        APELLIDO        SECTOR     SEXO    SUELDO     FECHA INGRESO    SECTOR         hame EDAD\n");
+    printf("  ID      NOMBRE        APELLIDO        SECTOR     SEXO    SUELDO     FECHA INGRESO    SECTOR         EDAD\n");
     for(i=0; i<tam; i++)
     {
 
