@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1589139861 source:c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\bibloteca.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"hardcodeo.h"
+	"bibloteca.h"
+	"sectores.h"
+
+1589132534 source:c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"bibloteca.h"
+	"sectores.h"
+	"informes.h"
+
+1589139682 c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\bibloteca.h
+	"sectores.h"
+
+1589139823 c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\hardcodeo.h
+
+1589073886 c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\sectores.h
+
+1589074167 source:c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\sectores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"informes.h"
+	"bibloteca.h"
+	"sectores.h"
+
+1589140477 source:c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"informes.h"
+	"bibloteca.h"
+	"sectores.h"
+
+1589134450 c:\users\cristian\desktop\carpeta codeblocks\tiposdedatospropios\informes.h
+	"bibloteca.h"
+	"sectores.h"
+
