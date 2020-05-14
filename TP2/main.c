@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "bibloteca.h"
-#include "sectores.h"
-#include "informes.h"
+#include "empleado.h"
 #define TAM 7
-#define TAMSECTORES 5
 
 
 int main()
@@ -15,7 +12,6 @@ int main()
     int opcion;
     int trigger = 1;
     eFecha lista[TAM];
-    eSector sectores[TAMSECTORES] = { {1,"SISTEMAS"},{2,"RRHH"},{3,"VENTAS"},{4,"AT.CLIENTE"},{5,"OPERACIONES"} };
 
 
     eEmpleado listado[TAM];
@@ -39,7 +35,7 @@ int main()
 
         if(trigger==1){
             clean();
-            modificar(listado,TAM,TAMSECTORES,sectores);
+            modificar(listado,TAM);
         }
         else
         {
@@ -50,7 +46,7 @@ int main()
         case 3:
          if(trigger==1){
             clean();
-            mostrarEmpleado(listado,TAM,TAMSECTORES,sectores);
+            mostrarEmpleado(listado,TAM);
         }
         else
         {
@@ -61,7 +57,7 @@ int main()
         case 4:
          if(trigger==1){
             clean();
-            remover(listado,TAM,TAMSECTORES,sectores);
+            remover(listado,TAM);
         }
         else
         {
@@ -73,7 +69,7 @@ int main()
          if(trigger==1){
             clean();
             ordenamientoBurbuja(listado,TAM);
-            mostrarEmpleado(listado,TAM,TAMSECTORES,sectores);
+            mostrarEmpleado(listado,TAM);
         }
         else
         {
@@ -82,17 +78,6 @@ int main()
         break;
 
         case 6:
-         if(trigger==1){
-            clean();
-            menuDeInformes(listado,TAM,sectores,TAMSECTORES);
-        }
-        else
-        {
-            printf("no hay empleados ingresados.\n");
-        }
-        break;
-
-        case 7:
         seguir = 'n';
         break;
         default:

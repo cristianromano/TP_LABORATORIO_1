@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "hardcodeo.h"
-#include "bibloteca.h"
-#include "sectores.h"
+#include "empleado.h"
+
+
 
 
 
@@ -132,19 +133,19 @@ void initEmpleado(eEmpleado listado[], int tam)
     }
 }
 
-void mostrarEmpleado(eEmpleado listado[],int tam, int tamsec , eSector sectores[])
+void mostrarEmpleado(eEmpleado listado[],int tam)
 {
     int trigger = 0;
     int i;
 
     printf("**********************************************************************************\n");
-    printf("  ID      NOMBRE        APELLIDO        SECTOR     SEXO    SUELDO     FECHA INGRESO    SECTOR         EDAD\n");
+    printf("  ID      NOMBRE        APELLIDO        SECTOR     SEXO    SUELDO     FECHA INGRESO          EDAD\n");
     for(i=0; i<tam; i++)
     {
 
         if(listado[i].isEmpty == 0)
         {
-            printListado(listado[i],tamsec,sectores);
+            printListado(listado[i]);
             trigger = 1;
         }
 
@@ -158,15 +159,12 @@ void mostrarEmpleado(eEmpleado listado[],int tam, int tamsec , eSector sectores[
 
 }
 
-void printListado(eEmpleado listado , int tamsec , eSector sectores[])
+void printListado(eEmpleado listado)
 {
 
-    char descripcion[20];
 
-    cargarDescripcion(descripcion,sectores,listado.idSector,tamsec);
-
-    printf("  %d  %10s %10s\t         %02d         %c      %5.2f     %02d/%0d/%d     %10s        %d\n",listado.id,listado.nombre,listado.apellido,listado.idSector,listado.sexo,listado.sueldo,listado.fechaIngreso.dia,
-           listado.fechaIngreso.mes,listado.fechaIngreso.anio,descripcion,listado.edad);
+    printf("  %d  %10s %10s\t         %02d         %c      %5.2f     %02d/%0d/%d           %d\n",listado.id,listado.nombre,listado.apellido,listado.idSector,listado.sexo,listado.sueldo,listado.fechaIngreso.dia,
+           listado.fechaIngreso.mes,listado.fechaIngreso.anio,listado.edad);
 
 
 
@@ -224,8 +222,7 @@ int menu()
     printf("3.LISTAR EMPLEADO\n");
     printf("4.REMOVER EMPLEADO\n");
     printf("5.ORDENAR POR APELLIDO Y SECTOR A EMPLEADOS\n");
-    printf("6.MENU DE INFORMES\n");
-    printf("7.SALIR\n");
+    printf("6.SALIR\n");
 
 
     printf("eliga una opcion: ");
@@ -269,7 +266,7 @@ void pregunta(eEmpleado listado[], int tam, eFecha lista[])
 
 }
 
-void preguntaModificar(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
+void preguntaModificar(eEmpleado listado[], int tam)
 {
     char pregunta;
     printf("desea modificar otros empleados? ");
@@ -279,13 +276,13 @@ void preguntaModificar(eEmpleado listado[], int tam , int tamsec , eSector secto
     if(pregunta=='s' || pregunta=='S' )
     {
         clean();
-        modificar(listado,tam,tamsec,sectores);
+        modificar(listado,tam);
     }
 
 
 }
 
-void preguntaEliminar(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
+void preguntaEliminar(eEmpleado listado[], int tam)
 {
     char pregunta;
     printf("desea eliminar otros empleados? ");
@@ -295,14 +292,14 @@ void preguntaEliminar(eEmpleado listado[], int tam , int tamsec , eSector sector
     if(pregunta=='s' || pregunta=='S' )
     {
         clean();
-        remover(listado,tam,tamsec,sectores);
+        remover(listado,tam);
     }
 
 
 }
 
 
-void modificar(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
+void modificar(eEmpleado listado[], int tam)
 {
     int numero = 0;
     int id = 0;
@@ -313,7 +310,7 @@ void modificar(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
 
     char respuesta;
 
-    mostrarEmpleado(listado,tam,tamsec,sectores);
+    mostrarEmpleado(listado,tam);
 
     printf("\ningrese el ID del empleado que desee modificar: ");
     scanf("%d",&numero);
@@ -418,7 +415,7 @@ void modificar(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
             if(respuesta=='s' || respuesta=='S')
             {
 
-                listado[id].sector = sector;
+                listado[id].idSector = sector;
                 printf("cambio realizado.\n");
 
             }
@@ -441,20 +438,20 @@ void modificar(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
 
 
     printf("\n");
-    preguntaModificar(listado,tam,tamsec,sectores);
+    preguntaModificar(listado,tam);
 
 
 }
 
 
 
-void remover(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
+void remover(eEmpleado listado[], int tam)
 {
     int numero = 0;
     int id = 0;
     char respuesta;
 
-    mostrarEmpleado(listado,tam,tamsec,sectores);
+    mostrarEmpleado(listado,tam);
 
     printf("ingrese ID de empleado a remover: ");
     scanf("%d",&numero);
@@ -484,7 +481,7 @@ void remover(eEmpleado listado[], int tam , int tamsec , eSector sectores[])
     }
 
     printf("\n");
-    preguntaEliminar(listado,tam,tamsec,sectores);
+    preguntaEliminar(listado,tam);
 
 }
 
@@ -520,25 +517,5 @@ int i;
 
 }
 
-int cargarDescripcion(char descripcion[] , eSector sectores[] , int id , int tamsec)
-{
-
-    int i , retorno;
-
-    retorno = -1;
-
-    for(i=0;i<tamsec;i++)
-    {
-        if(sectores[i].id == id)
-        {
-            strcpy(descripcion,sectores[i].descripcion);
-            retorno = 1;
-        }
-
-    }
-
-    return retorno;
-
-}
 
 
