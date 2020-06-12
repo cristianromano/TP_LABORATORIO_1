@@ -294,12 +294,12 @@ int sortID(void* datoUno , void* datoDos)
    Employee* idUno = (Employee*) datoUno;
    Employee* idDos = (Employee*) datoDos;
 
-   if(idUno->id < idDos->id)
+   if(idUno->id > idDos->id)
    {
        retorno =  1;
    }
 
-   else if(idUno->id > idDos->id)
+   else if(idUno->id < idDos->id)
    {
        retorno =  0;
    }

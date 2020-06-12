@@ -5,6 +5,13 @@
 #include "Employee.h"
 #include "parser.h"
 
+static int generarId()
+{
+	static int contadorId=1001;
+	contadorId++;
+	return contadorId;
+}
+
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -102,7 +109,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
         fflush(stdin);
 
-        idAux = ultimoID(pArrayListEmployee)+1;
+        idAux = generarId();
 
         fflush(stdin);
 
