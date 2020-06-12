@@ -31,8 +31,7 @@ int main()
     do
     {
 
-        printf("1.cargar texto\n2.add\n3.edit\n4.mostrar\n5.remover\n6.sort\n7.guardar texto\n8.guardar binario\n9.cargar binario\nopcion: ");
-        scanf("%d",&opcion);
+        menu(&opcion);
 
         switch(opcion)
         {

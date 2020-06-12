@@ -38,4 +38,6 @@ void limpiarBuffer();
 int sortNombre(void* datoUno , void* datoDos);
 int sortID(void* datoUno , void* datoDos);
 
+void menu(int* opcion);
+
 #endif // employee_H_INCLUDED

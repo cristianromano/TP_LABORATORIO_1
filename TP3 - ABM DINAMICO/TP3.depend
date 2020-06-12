@@ -188,3 +188,40 @@
 
 1533133022 c:\users\cristian\desktop\carpeta codeblocks\tp3_cascara\win_64\parser.h
 
+1591921328 source:c:\users\cristian\desktop\tp_laboratorio_1\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+
+1533133022 c:\users\cristian\desktop\tp_laboratorio_1\win_64\linkedlist.h
+
+1591928147 c:\users\cristian\desktop\tp_laboratorio_1\win_64\employee.h
+
+1533133022 c:\users\cristian\desktop\tp_laboratorio_1\win_64\parser.h
+
+1591923470 source:c:\users\cristian\desktop\tp_laboratorio_1\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1591928065 source:c:\users\cristian\desktop\tp_laboratorio_1\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1533133022 c:\users\cristian\desktop\tp_laboratorio_1\win_64\controller.h
+
+1591927558 source:c:\users\cristian\desktop\tp_laboratorio_1\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+

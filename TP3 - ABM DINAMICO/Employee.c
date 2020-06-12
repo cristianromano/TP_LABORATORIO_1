@@ -331,7 +331,13 @@ int sortNombre(void* datoUno , void* datoDos)
    return retorno;
 }
 
+void menu(int* opcion)
+{
 
+    printf("1.CARGAR TEXTO\n2.AGREGAR EMPLEADO\n3.EDITAR EMPLEADO\n4.MOSTRAR EMPLEADO\n5.REMOVER EMPLEADO\n6.ORDENAR EMPLEADO\n7.GUARDAR EN TEXTO\n8.GUARDAR EN BINARIO\n9.CARGAR BINARIO\n10.SALIR\nOPCION: ");
+    scanf("%d",&*opcion);
+
+}
 
 void clean()
 {
