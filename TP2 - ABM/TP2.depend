@@ -16,3 +16,20 @@
 
 1589486517 c:\users\cristian\desktop\carpeta codeblocks\tp2\hardcodeo.h
 
+1589486635 source:c:\users\cristian\desktop\tp_laboratorio_1\tp2 - abm\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"hardcodeo.h"
+	"empleado.h"
+
+1589486517 c:\users\cristian\desktop\tp_laboratorio_1\tp2 - abm\hardcodeo.h
+
+1589486395 c:\users\cristian\desktop\tp_laboratorio_1\tp2 - abm\empleado.h
+
+1589486635 source:c:\users\cristian\desktop\tp_laboratorio_1\tp2 - abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"empleado.h"
+
