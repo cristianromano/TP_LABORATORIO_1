@@ -14,7 +14,6 @@ typedef struct{
 char nombre[20];
 char apellido[20];
 int sector;
-char sexo;
 int id;
 float sueldo;
 eFecha fechaIngreso;
@@ -29,7 +28,7 @@ void ingresoDatos(eEmpleado emp[] , int tam , eFecha auxFecha[]);
 void printListado(eEmpleado listado);
 void ordenamientoBurbuja(eEmpleado listado[] , int tam);
 void initEmpleado(eEmpleado listado[], int tam);
-void mostrarEmpleado(eEmpleado listado[],int tam);
+int mostrarEmpleado(eEmpleado listado[],int tam);
 int buscarLibre(eEmpleado listado[],int tam);
 int buscarEmpleado(int id , eEmpleado listado[] , int tam);
 int menu();

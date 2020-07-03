@@ -11,9 +11,9 @@
 
 static int generarId()
 {
-	static int contadorId=1000;
-	contadorId++;
-	return contadorId;
+    static int contadorId=1006;
+    contadorId++;
+    return contadorId;
 }
 
 void ingresoDatos(eEmpleado emp[], int tam, eFecha auxFecha[])
@@ -33,9 +33,9 @@ void ingresoDatos(eEmpleado emp[], int tam, eFecha auxFecha[])
     else
     {
 
-       /* printf("%d.ingrese ID: ",i+1);
-        scanf("%d",&emp[indice].id);
-        fflush(stdin);*/
+        /* printf("%d.ingrese ID: ",i+1);
+         scanf("%d",&emp[indice].id);
+         fflush(stdin);*/
 
 
 
@@ -52,22 +52,14 @@ void ingresoDatos(eEmpleado emp[], int tam, eFecha auxFecha[])
         scanf("%d",&emp[indice].idSector);
         fflush(stdin);
 
-        printf("%d.ingrese edad: ",i+1);
-        scanf("%d",&emp[indice].edad);
-        fflush(stdin);
-
-        printf("%d.ingrese sexo: ",i+1);
-        scanf("%c",&emp[indice].sexo);
-        fflush(stdin);
-
         printf("%d.ingrese sueldo: ",i+1);
         scanf("%f",&emp[indice].sueldo);
         fflush(stdin);
 
-        printf("%d.ingrese fecha de entrada xx/xx/xxxx: \n",i+1);
+    /*    printf("%d.ingrese fecha de entrada xx/xx/xxxx: \n",i+1);
         scanf("%d/%d/%d",&auxFecha[indice].dia,&auxFecha[indice].mes,&auxFecha[indice].anio);
 
-        emp[indice].fechaIngreso = auxFecha[indice];
+        emp[indice].fechaIngreso = auxFecha[indice];*/
 
         fflush(stdin);
 
@@ -99,7 +91,7 @@ void ordenamientoBurbuja(eEmpleado listado[], int tam)
         for(i=0; i<tam-1; i++)
         {
 
-            if(listado[i].idSector>listado[i+1].idSector)
+            if(strcmp(listado[i].apellido,listado[i+1].apellido)>0)
             {
 
                 flagSwap = 1;
@@ -109,7 +101,7 @@ void ordenamientoBurbuja(eEmpleado listado[], int tam)
 
             }
 
-            else if(listado[i].idSector == listado[i+1].idSector && listado[i].apellido>listado[i+1].apellido)
+            else if(listado[i].idSector > listado[i+1].idSector && (strcmp(listado[i].apellido,listado[i+1].apellido)==0) )
             {
 
                 auxEmpleado = listado[i];
@@ -125,7 +117,6 @@ void ordenamientoBurbuja(eEmpleado listado[], int tam)
 void initEmpleado(eEmpleado listado[], int tam)
 {
     int i;
-
     for(i=0; i<tam; i++)
     {
         listado[i].isEmpty = 1;
@@ -133,13 +124,14 @@ void initEmpleado(eEmpleado listado[], int tam)
     }
 }
 
-void mostrarEmpleado(eEmpleado listado[],int tam)
+int mostrarEmpleado(eEmpleado listado[],int tam)
 {
     int trigger = 0;
     int i;
 
+
     printf("**********************************************************************************\n");
-    printf("  ID      NOMBRE        APELLIDO        SECTOR     SEXO    SUELDO     FECHA INGRESO          EDAD\n");
+    printf("  ID      NOMBRE        APELLIDO        SECTOR        SUELDO      \n");
     for(i=0; i<tam; i++)
     {
 
@@ -157,14 +149,15 @@ void mostrarEmpleado(eEmpleado listado[],int tam)
         printf("no hay empleados.\n");
     }
 
+    return trigger;
+
 }
 
 void printListado(eEmpleado listado)
 {
 
 
-    printf("  %d  %10s %10s\t         %02d         %c      %5.2f     %02d/%0d/%d           %d\n",listado.id,listado.nombre,listado.apellido,listado.idSector,listado.sexo,listado.sueldo,listado.fechaIngreso.dia,
-           listado.fechaIngreso.mes,listado.fechaIngreso.anio,listado.edad);
+    printf("  %d  %10s %10s\t         %02d               %5.2f\n",listado.id,listado.nombre,listado.apellido,listado.idSector,listado.sueldo);
 
 
 
@@ -310,135 +303,140 @@ void modificar(eEmpleado listado[], int tam)
 
     char respuesta;
 
-    mostrarEmpleado(listado,tam);
-
-    printf("\ningrese el ID del empleado que desee modificar: ");
-    scanf("%d",&numero);
-    limpiarBuffer();
-
-
-    if((id = buscarEmpleado(numero,listado,tam)) < 0)
+    if(mostrarEmpleado(listado,tam)==1)
     {
-        printf("\nno se encontro empleado.\n");
-
-    }
-
-    else
-    {
-        printf("usuario encontrado.\n");
-        pause();
-        clean();
-
-        printf("MODIFICAR:\n1.Nombre\n2.Sueldo\n3.Apellido\n4.Sector\neliga una opcion: ");
+        printf("\ningrese el ID del empleado que desee modificar: ");
         scanf("%d",&numero);
+        limpiarBuffer();
 
-        switch(numero)
+
+        if((id = buscarEmpleado(numero,listado,tam)) < 0)
         {
-        case 1:
-            printf("ingrese nuevo nombre: ");
-            limpiarBuffer();
-            gets(nombre);
-
-            printf("esta seguro?: ");
-            scanf("%c",&respuesta);
-            limpiarBuffer();
-            if(respuesta=='s' || respuesta=='S' )
-            {
-
-                strcpy(listado[id].nombre,nombre);
-                printf("cambio realizado.\n");
-
-            }
-
-            else
-            {
-                printf("ningun cambio fue realizado.\n");
-            }
-
-            break;
-
-        case 2:
-            printf("ingrese nuevo sueldo: ");
-            scanf("%f",&sueldo);
-
-            printf("esta seguro?: ");
-            limpiarBuffer();
-            scanf("%c",&respuesta);
-            limpiarBuffer();
-
-            if(respuesta=='s' || respuesta=='S')
-            {
-
-                listado[id].sueldo = sueldo;
-                printf("cambio realizado.\n");
-
-            }
-
-            else
-            {
-                printf("ningun cambio fue realizado.\n");
-            }
-
-            break;
-
-        case 3:
-            printf("ingrese nuevo apellido: ");
-            limpiarBuffer();
-            gets(apellido);
-
-            printf("esta seguro?: ");
-            scanf("%c",&respuesta);
-            limpiarBuffer();
-            if(respuesta=='s' || respuesta=='S' )
-            {
-
-                strcpy(listado[id].apellido,apellido);
-                printf("cambio realizado.\n");
-
-            }
-
-            else
-            {
-                printf("ningun cambio fue realizado.\n");
-            }
-            break;
-
-        case 4:
-            printf("ingrese nuevo sector: ");
-            scanf("%d",&sector);
-
-            printf("esta seguro?: ");
-            limpiarBuffer();
-            scanf("%c",&respuesta);
-            limpiarBuffer();
-
-            if(respuesta=='s' || respuesta=='S')
-            {
-
-                listado[id].idSector = sector;
-                printf("cambio realizado.\n");
-
-            }
-
-            else
-            {
-                printf("ningun cambio fue realizado.\n");
-            }
-
-            break;
-
-
-        default:
-            printf("no es una opcion valida.\n");
-            break;
+            printf("\nno se encontro empleado.\n");
 
         }
 
+        else
+        {
+            printf("usuario encontrado.\n");
+            pause();
+            clean();
+
+            printf("MODIFICAR:\n1.Nombre\n2.Sueldo\n3.Apellido\n4.Sector\neliga una opcion: ");
+            scanf("%d",&numero);
+
+            switch(numero)
+            {
+            case 1:
+                printf("ingrese nuevo nombre: ");
+                limpiarBuffer();
+                gets(nombre);
+
+                printf("esta seguro?: ");
+                scanf("%c",&respuesta);
+                limpiarBuffer();
+                if(respuesta=='s' || respuesta=='S' )
+                {
+
+                    strcpy(listado[id].nombre,nombre);
+                    printf("cambio realizado.\n");
+
+                }
+
+                else
+                {
+                    printf("ningun cambio fue realizado.\n");
+                }
+
+                break;
+
+            case 2:
+                printf("ingrese nuevo sueldo: ");
+                scanf("%f",&sueldo);
+
+                printf("esta seguro?: ");
+                limpiarBuffer();
+                scanf("%c",&respuesta);
+                limpiarBuffer();
+
+                if(respuesta=='s' || respuesta=='S')
+                {
+
+                    listado[id].sueldo = sueldo;
+                    printf("cambio realizado.\n");
+
+                }
+
+                else
+                {
+                    printf("ningun cambio fue realizado.\n");
+                }
+
+                break;
+
+            case 3:
+                printf("ingrese nuevo apellido: ");
+                limpiarBuffer();
+                gets(apellido);
+
+                printf("esta seguro?: ");
+                scanf("%c",&respuesta);
+                limpiarBuffer();
+                if(respuesta=='s' || respuesta=='S' )
+                {
+
+                    strcpy(listado[id].apellido,apellido);
+                    printf("cambio realizado.\n");
+
+                }
+
+                else
+                {
+                    printf("ningun cambio fue realizado.\n");
+                }
+                break;
+
+            case 4:
+                printf("ingrese nuevo sector: ");
+                scanf("%d",&sector);
+
+                printf("esta seguro?: ");
+                limpiarBuffer();
+                scanf("%c",&respuesta);
+                limpiarBuffer();
+
+                if(respuesta=='s' || respuesta=='S')
+                {
+
+                    listado[id].idSector = sector;
+                    printf("cambio realizado.\n");
+
+                }
+
+                else
+                {
+                    printf("ningun cambio fue realizado.\n");
+                }
+
+                break;
+
+
+            default:
+                printf("no es una opcion valida.\n");
+                break;
+
+            }
+        }
+
+        printf("\n");
+        preguntaModificar(listado,tam);
+
     }
 
 
-    printf("\n");
-    preguntaModificar(listado,tam);
+
+
+
 
 
 }
@@ -451,9 +449,9 @@ void remover(eEmpleado listado[], int tam)
     int id = 0;
     char respuesta;
 
-    mostrarEmpleado(listado,tam);
-
-    printf("ingrese ID de empleado a remover: ");
+  if(mostrarEmpleado(listado,tam)==1)
+  {
+          printf("ingrese ID de empleado a remover: ");
     scanf("%d",&numero);
 
     if((id = buscarEmpleado(numero,listado,tam)<0))
@@ -483,18 +481,24 @@ void remover(eEmpleado listado[], int tam)
     printf("\n");
     preguntaEliminar(listado,tam);
 
+  }
+
+
+
+
+
 }
 
 
 
-void hardcodeoDatos(eEmpleado listado[] , int tam)
+void hardcodeoDatos(eEmpleado listado[], int tam)
 {
 
-int i;
+    int i;
 
 
 
-    for(i=0 ; i<tam ; i++)
+    for(i=0 ; i<7 ; i++)
     {
 
         strcpy(listado[i].nombre,nombres[i]);
@@ -503,15 +507,13 @@ int i;
         limpiarBuffer();
         listado[i].id = ids[i];
 
-      //  listado[i].sector = idSectores[i];
-        listado[i].sexo = sexos[i];
+        //  listado[i].sector = idSectores[i];
         listado[i].sueldo = sueldos[i];
-        listado[i].fechaIngreso.dia = dias[i];
+/*        listado[i].fechaIngreso.dia = dias[i];
         listado[i].fechaIngreso.mes = meses[i];
-        listado[i].fechaIngreso.anio = anios[i];
+        listado[i].fechaIngreso.anio = anios[i];*/
         listado[i].idSector = idSectores[i];
-        listado[i].edad = edades[i];
-         listado[i].isEmpty = 0;
+        listado[i].isEmpty = 0;
 
     }
 

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "empleado.h"
-#define TAM 7
+#define TAM 50
 
 
 int main()
@@ -10,7 +10,6 @@ int main()
 
     char seguir = 's';
     int opcion;
-    int trigger = 1;
     eFecha lista[TAM];
 
 
@@ -18,7 +17,8 @@ int main()
     initEmpleado(listado,TAM);
     hardcodeoDatos(listado,TAM);
 
-    do{
+    do
+    {
 
 
         opcion = menu();
@@ -26,70 +26,52 @@ int main()
         switch(opcion)
         {
         case 1:
-        clean();
-        ingresoDatos(listado,TAM,lista);
-        trigger = 1;
-        break;
+            clean();
+            ingresoDatos(listado,TAM,lista);
+
+            break;
 
         case 2:
 
-        if(trigger==1){
             clean();
             modificar(listado,TAM);
-        }
-        else
-        {
-            printf("no hay empleados ingresados.\n");
-        }
-        break;
+
+            break;
 
         case 3:
-         if(trigger==1){
             clean();
             mostrarEmpleado(listado,TAM);
-        }
-        else
-        {
-            printf("no hay empleados ingresados.\n");
-        }
-        break;
+
+            break;
 
         case 4:
-         if(trigger==1){
             clean();
             remover(listado,TAM);
-        }
-        else
-        {
-            printf("no hay empleados ingresados.\n");
-        }
-        break;
+
+            break;
 
         case 5:
-         if(trigger==1){
+
             clean();
             ordenamientoBurbuja(listado,TAM);
             mostrarEmpleado(listado,TAM);
-        }
-        else
-        {
-            printf("no hay empleados ingresados.\n");
-        }
-        break;
+
+            break;
 
         case 6:
-        seguir = 'n';
-        break;
+            seguir = 'n';
+            break;
         default:
-        printf("no es una opcion.\n");
-        break;
+            printf("no es una opcion.\n");
+            break;
 
         }
 
         pause();
         clean();
 
-    }while(seguir=='s');
+    }
+    while(seguir=='s');
 
 
     return 0;
