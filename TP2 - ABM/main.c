@@ -15,7 +15,7 @@ int main()
 
     eEmpleado listado[TAM];
     initEmpleado(listado,TAM);
-    hardcodeoDatos(listado,TAM);
+//    hardcodeoDatos(listado,TAM);
 
     do
     {
