@@ -56,10 +56,10 @@ void ingresoDatos(eEmpleado emp[], int tam, eFecha auxFecha[])
         scanf("%f",&emp[indice].sueldo);
         fflush(stdin);
 
-    /*    printf("%d.ingrese fecha de entrada xx/xx/xxxx: \n",i+1);
-        scanf("%d/%d/%d",&auxFecha[indice].dia,&auxFecha[indice].mes,&auxFecha[indice].anio);
+        /*    printf("%d.ingrese fecha de entrada xx/xx/xxxx: \n",i+1);
+            scanf("%d/%d/%d",&auxFecha[indice].dia,&auxFecha[indice].mes,&auxFecha[indice].anio);
 
-        emp[indice].fechaIngreso = auxFecha[indice];*/
+            emp[indice].fechaIngreso = auxFecha[indice];*/
 
         fflush(stdin);
 
@@ -214,9 +214,9 @@ int menu()
     printf("2.MODIFICAR EMPLEADO\n");
     printf("3.LISTAR EMPLEADO\n");
     printf("4.REMOVER EMPLEADO\n");
-    printf("5.ORDENAR POR APELLIDO Y SECTOR A EMPLEADOS\n");
-    printf("6.SALIR\n");
-
+    printf("5.ORDENAR X APELLIDO\n");
+    printf("6.SALARIO TOTAL , PROMEDIO Y EMPLEADOS QUE SUPERAN EL PROMEDIO\n");
+    printf("7.SALIR\n");
 
     printf("eliga una opcion: ");
     scanf("%d",&opcion);
@@ -449,39 +449,39 @@ void remover(eEmpleado listado[], int tam)
     int id = 0;
     char respuesta;
 
-  if(mostrarEmpleado(listado,tam)==1)
-  {
-          printf("ingrese ID de empleado a remover: ");
-    scanf("%d",&numero);
-
-    if((id = buscarEmpleado(numero,listado,tam)<0))
+    if(mostrarEmpleado(listado,tam)==1)
     {
-        printf("no se encontro el ID\n");
-    }
+        printf("ingrese ID de empleado a remover: ");
+        scanf("%d",&numero);
 
-    else
-    {
-
-        printf("seguro desea remover al empleado? %s:",listado[id].nombre);
-        limpiarBuffer();
-        scanf("%c",&respuesta);
-        limpiarBuffer();
-
-        if(respuesta=='s' || respuesta=='S')
+        if((id = buscarEmpleado(numero,listado,tam)<0))
         {
-            listado[id].isEmpty = 1;
-            printf("empleado removido.\n");
+            printf("no se encontro el ID\n");
         }
+
         else
         {
-            printf("ningun cambio fue realizado.\n");
+
+            printf("seguro desea remover al empleado? %s:",listado[id].nombre);
+            limpiarBuffer();
+            scanf("%c",&respuesta);
+            limpiarBuffer();
+
+            if(respuesta=='s' || respuesta=='S')
+            {
+                listado[id].isEmpty = 1;
+                printf("empleado removido.\n");
+            }
+            else
+            {
+                printf("ningun cambio fue realizado.\n");
+            }
         }
+
+        printf("\n");
+        preguntaEliminar(listado,tam);
+
     }
-
-    printf("\n");
-    preguntaEliminar(listado,tam);
-
-  }
 
 
 
@@ -509,9 +509,9 @@ void hardcodeoDatos(eEmpleado listado[], int tam)
 
         //  listado[i].sector = idSectores[i];
         listado[i].sueldo = sueldos[i];
-/*        listado[i].fechaIngreso.dia = dias[i];
-        listado[i].fechaIngreso.mes = meses[i];
-        listado[i].fechaIngreso.anio = anios[i];*/
+        /*        listado[i].fechaIngreso.dia = dias[i];
+                listado[i].fechaIngreso.mes = meses[i];
+                listado[i].fechaIngreso.anio = anios[i];*/
         listado[i].idSector = idSectores[i];
         listado[i].isEmpty = 0;
 
@@ -520,4 +520,62 @@ void hardcodeoDatos(eEmpleado listado[], int tam)
 }
 
 
+int promedioSalarios(eEmpleado listado[], int tam)
+{
 
+    int i;
+    float salarioTotal = 0;
+    float salarioPromedio = 0;
+    int cant = 0;
+    int vueltas = 0;
+    int retorno = 0;
+    int flag = 0;
+
+    if(listado!=NULL && tam>0)
+    {
+        for(i=0; i<tam; i++)
+        {
+            if(listado[i].isEmpty == 0)
+            {
+                salarioTotal += listado[i].sueldo;
+                vueltas++;
+                flag = 1;
+            }
+
+        }
+
+        if(flag == 1)
+        {
+            printf("el salario total es %.2f\n\n",salarioTotal);
+
+            salarioPromedio = salarioTotal / vueltas;
+
+            printf("el salario promedio es %.2f\n\n",salarioPromedio);
+
+
+            for(i=0; i<tam; i++)
+            {
+                if(listado[i].sueldo >= salarioPromedio && listado[i].isEmpty == 0)
+                {
+                    cant++;
+                }
+
+            }
+            printf("la cantidad de empleados que superan el promedio son %d\n\n",cant);
+        }
+
+        else
+        {
+            printf("no hay empleados.\n\n");
+        }
+
+
+
+    }
+
+
+
+
+    return retorno;
+
+}

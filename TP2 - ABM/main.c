@@ -15,7 +15,7 @@ int main()
 
     eEmpleado listado[TAM];
     initEmpleado(listado,TAM);
-//    hardcodeoDatos(listado,TAM);
+    hardcodeoDatos(listado,TAM);
 
     do
     {
@@ -29,6 +29,7 @@ int main()
             clean();
             ingresoDatos(listado,TAM,lista);
 
+
             break;
 
         case 2:
@@ -36,17 +37,20 @@ int main()
             clean();
             modificar(listado,TAM);
 
+
             break;
 
         case 3:
             clean();
             mostrarEmpleado(listado,TAM);
 
+
             break;
 
         case 4:
             clean();
             remover(listado,TAM);
+
 
             break;
 
@@ -55,10 +59,17 @@ int main()
             clean();
             ordenamientoBurbuja(listado,TAM);
             mostrarEmpleado(listado,TAM);
-
             break;
 
         case 6:
+
+            clean();
+            promedioSalarios(listado,TAM);
+
+
+            break;
+
+        case 7:
             seguir = 'n';
             break;
         default:

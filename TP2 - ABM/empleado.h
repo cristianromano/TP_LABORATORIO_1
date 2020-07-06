@@ -41,6 +41,6 @@ void preguntaModificar(eEmpleado listado[], int tam);
 void remover(eEmpleado listado[], int tam);
 void preguntaEliminar(eEmpleado listado[], int tam);
 void hardcodeoDatos(eEmpleado listado[] , int tam);
-
+int promedioSalarios(eEmpleado listado[], int tam);
 
 #endif // EMPLEADO_H_INCLUDED
